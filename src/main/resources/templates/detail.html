@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head><title th:text="${movie.title}"></title></head>
+<link th:href="@{/styles/stylesheet.css}" rel="stylesheet" />
+<body>
+<div class="topnav">
+    <a class="" th:href="@{'/'}">Trending</a>
+    <a class="" th:href="@{'/favorites'}">Favorites</a>
+
+</div>
+
+
+<div class="movie_detail_cont">
+
+<h1 th:text="${movie.title}"></h1>
+<img th:src="${movie.posterUrl}" width="300"/>
+
+    <form th:action="@{/favorite/add}" method="post" th:if="${!isFavourite}">
+        <input type="hidden" name="id" th:value="${movie.id}"/>
+        <input type="hidden" name="title" th:value="${movie.title}"/>
+        <input type="hidden" name="posterUrl" th:value="${movie.posterUrl}"/>
+
+        <button type="submit" class="w3button">Add to Favorites</button>
+    </form>
+
+    <form th:action="@{/favorite/remove}" method="post" th:if="${isFavourite}">
+        <input type="hidden" name="id" th:value="${movie.id}"/>
+        <button type="submit" class="w3button" style="background-color: #f44336"> Remove from Favorites</button>
+    </form>
+
+<p th:text="${movie.overview}"></p>
+<p>Release Date: <span th:text="${movie.releaseDate}"></span></p>
+<p>Rating: <span th:text="${movie.rating+'/10'}"></span></p>
+
+
+
+</div>
+
+
+
+</body>
+</html>
