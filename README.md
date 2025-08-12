@@ -43,7 +43,7 @@ src/
 
 ├── _repository/       # JPA repository for favorites
 
-├── _model/            # Movie and Genre models
+├── _model/            # Movie  models
 
 ├── templates/         # Thymeleaf HTML views
 
